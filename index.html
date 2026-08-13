@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bé Phan Ngọc Hoàng Anh - Tô Màu & Đồ Chữ</title>
+    <title>Bé Phan Ngọc Hoàng Anh - Tô Màu & Đồ Chữ A-Z</title>
     <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@600;800;900&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -35,7 +35,6 @@
             align-items: center;
         }
 
-        /* Header UI */
         header {
             width: 100%;
             background: linear-gradient(135deg, #FF9A9E 0%, #FECFEF 100%);
@@ -95,7 +94,6 @@
             background: #FFF9C4;
         }
 
-        /* Layout Main Game */
         .game-container {
             display: flex;
             flex-wrap: wrap;
@@ -106,7 +104,6 @@
             justify-content: center;
         }
 
-        /* Sidebar Chữ cái */
         .letter-selector {
             background: #FFF;
             border-radius: 24px;
@@ -117,7 +114,7 @@
             gap: 10px;
             max-height: 75vh;
             overflow-y: auto;
-            width: 220px;
+            width: 240px;
             border: 4px solid var(--purple);
         }
 
@@ -156,7 +153,6 @@
             color: #78909C;
         }
 
-        /* Workspace */
         .workspace {
             flex: 1;
             min-width: 320px;
@@ -257,7 +253,6 @@
         .btn-clear { background: #FF7675; }
         .btn-finish { background: #55E6C1; color: #1B4F72; }
 
-        /* Modal Phần Thưởng */
         .modal-overlay {
             position: fixed;
             top: 0; left: 0; right: 0; bottom: 0;
@@ -335,7 +330,7 @@
             <span>👧</span>
             <div>Bé: Phan Ngọc Hoàng Anh</div>
         </div>
-        <h1>🎨 TÔ MÀU & ĐỒ CHỮ ✏️</h1>
+        <h1>🎨 TÔ MÀU & ĐỒ CHỮ A-Z ✏️</h1>
         <div class="audio-controls">
             <button class="btn-round" id="bgmToggle" onclick="toggleMusic()" title="Bật/Tắt Nhạc">🎵</button>
             <button class="btn-round" onclick="speakCurrentWord()" title="Đọc tiếng Anh">🔊</button>
@@ -343,13 +338,11 @@
     </header>
 
     <div class="game-container">
-        <!-- Sidebar Danh sách chữ cái -->
         <div class="letter-selector">
-            <div style="font-family:'Fredoka One'; text-align:center; color:#5C6BC0; margin-bottom:5px;">BẢNG CHỮ CÁI</div>
+            <div style="font-family:'Fredoka One'; text-align:center; color:#5C6BC0; margin-bottom:5px;">BẢNG CHỮ CÁI A-Z</div>
             <div class="letter-grid" id="letterGrid"></div>
         </div>
 
-        <!-- Khung chơi game -->
         <div class="workspace">
             <div class="mode-tabs">
                 <button class="tab-btn active" id="tabColor" onclick="switchMode('color')">🎨 Tô Màu Mảng</button>
@@ -369,7 +362,6 @@
         </div>
     </div>
 
-    <!-- Popup Thưởng siêu Cute -->
     <div class="modal-overlay" id="rewardModal">
         <div class="reward-card">
             <svg class="reward-avatar" viewBox="0 0 100 100">
@@ -391,14 +383,34 @@
     </div>
 
     <script>
+        // 26 Chữ cái A-Z liên kết trực tiếp các link ảnh bạn đã cung cấp
         const alphabetData = [
-            { letter: 'A', word: 'Apple', name: 'Quả táo', icon: '🍎', svg: drawApple },
-            { letter: 'B', word: 'Banana', name: 'Quả chuối', icon: '🍌', svg: drawBanana },
-            { letter: 'C', word: 'Cat', name: 'Con mèo', icon: '🐱', svg: drawCat },
-            { letter: 'D', word: 'Dog', name: 'Con chó', icon: '🐶', svg: drawDog },
-            { letter: 'E', word: 'Elephant', name: 'Con voi', icon: '🐘', svg: drawElephant },
-            { letter: 'F', word: 'Fish', name: 'Con cá', icon: '🐟', svg: drawFish },
-            { letter: 'Z', word: 'Zebra', name: 'Ngựa vằn', icon: '🦓', svg: drawZebra }
+            { letter: 'A', word: 'Apple', name: 'Quả táo', icon: '🍎', imgUrl: 'https://i.ibb.co/jS0ddXB/apple.png' },
+            { letter: 'B', word: 'Banana', name: 'Quả chuối', icon: '🍌', imgUrl: 'https://i.ibb.co/KpFxB0nV/banana.png' },
+            { letter: 'C', word: 'Cat', name: 'Con mèo', icon: '🐱', imgUrl: 'https://i.ibb.co/PZydWW35/cat.png' },
+            { letter: 'D', word: 'Dog', name: 'Con chó', icon: '🐶', imgUrl: 'https://i.ibb.co/Q7j7kskF/dog.png' },
+            { letter: 'E', word: 'Elephant', name: 'Con voi', icon: '🐘', imgUrl: 'https://i.ibb.co/b5c7Bypq/elephant.png' },
+            { letter: 'F', word: 'Fish', name: 'Con cá', icon: '🐟', imgUrl: 'https://i.ibb.co/W48cQhXL/fish.png' },
+            { letter: 'G', word: 'Gorilla', name: 'Con khỉ đột', icon: '🦍', imgUrl: 'https://i.ibb.co/VWJhh2xk/gorrilla.png' },
+            { letter: 'H', word: 'House', name: 'Ngôi nhà', icon: '🏠', imgUrl: 'https://i.ibb.co/Tx8y6D0q/house.png' },
+            { letter: 'I', word: 'Ice cream', name: 'Kem', icon: '🍦', imgUrl: 'https://i.ibb.co/7xzYVmJ4/ice-cream.png' },
+            { letter: 'J', word: 'Jet', name: 'Máy bay', icon: '✈️', imgUrl: 'https://i.ibb.co/FLdmsKNz/jet.png' },
+            { letter: 'K', word: 'Koala', name: 'Gấu Koala', icon: '🐨', imgUrl: 'https://i.ibb.co/nMg5dr7Z/koala.png' },
+            { letter: 'L', word: 'Lion', name: 'Sư tử', icon: '🦁', imgUrl: 'https://i.ibb.co/8nKpBf88/lion.png' },
+            { letter: 'M', word: 'Mouse', name: 'Con chuột', icon: '🐭', imgUrl: 'https://i.ibb.co/B2RZzT2F/mouse.png' },
+            { letter: 'N', word: 'Nest', name: 'Tổ chim', icon: '🪹', imgUrl: 'https://i.ibb.co/mFMgZRVc/nest.png' },
+            { letter: 'O', word: 'Octopus', name: 'Bạch tuộc', icon: '🐙', imgUrl: 'https://i.ibb.co/YBvSB6dj/octopus.png' },
+            { letter: 'P', word: 'Pig', name: 'Con heo', icon: '🐷', imgUrl: 'https://i.ibb.co/LXvRhvDq/pig.png' },
+            { letter: 'Q', word: 'Queen', name: 'Nữ hoàng', icon: '👑', imgUrl: 'https://i.ibb.co/n2mvfSJ/queen.png' },
+            { letter: 'R', word: 'Rabbit', name: 'Con thỏ', icon: '🐰', imgUrl: 'https://i.ibb.co/4ZPfZv4H/rabbit.png' },
+            { letter: 'S', word: 'Snake', name: 'Con rắn', icon: '🐍', imgUrl: 'https://i.ibb.co/xqsV1dBD/snake.png' },
+            { letter: 'T', word: 'Teddy bear', name: 'Gấu bông', icon: '🧸', imgUrl: 'https://i.ibb.co/rK0dw529/bear.png' },
+            { letter: 'U', word: 'Umbrella', name: 'Cái ô', icon: '☂️', imgUrl: 'https://i.ibb.co/sJvqKkw8/umbrella.png' },
+            { letter: 'V', word: 'Vegetables', name: 'Rau củ', icon: '🥕', imgUrl: 'https://i.ibb.co/FLDk0BC9/vegetable.png' },
+            { letter: 'W', word: 'Whale', name: 'Cá voi', icon: '🐳', imgUrl: 'https://i.ibb.co/7trFdHNW/whale.png' },
+            { letter: 'X', word: 'Xylophone', name: 'Đàn gõ', icon: '🎼', imgUrl: 'https://i.ibb.co/sdj0fDGg/xylophone.png' },
+            { letter: 'Y', word: 'Yo-yo', name: 'Đồ chơi Yo-yo', icon: '🪀', imgUrl: 'https://i.ibb.co/NdvdpPtq/yo-yo.png' },
+            { letter: 'Z', word: 'Zebra', name: 'Ngựa vằn', icon: '🦓', imgUrl: 'https://i.ibb.co/BvGYqQM/zebra.png' }
         ];
 
         const paletteColors = [
@@ -471,71 +483,17 @@
 
             const item = alphabetData[currentIndex];
             if (currentMode === 'color') {
-                item.svg(ctx);
+                const img = new Image();
+                img.crossOrigin = "anonymous";
+                img.src = item.imgUrl;
+                img.onload = () => {
+                    ctx.drawImage(img, 20, 20, 440, 440);
+                };
             } else {
                 drawTracingGuide(item.letter);
             }
         }
 
-        /* Hình vẽ nét đơn giản cho bé tô mảng */
-        function drawApple(c) {
-            c.lineWidth = 5; c.strokeStyle = '#2D3436'; c.lineCap = 'round';
-            c.beginPath(); c.moveTo(240, 170);
-            c.bezierCurveTo(190, 110, 110, 140, 110, 240);
-            c.bezierCurveTo(110, 350, 190, 410, 240, 410);
-            c.bezierCurveTo(290, 410, 370, 350, 370, 240);
-            c.bezierCurveTo(370, 140, 290, 110, 240, 170); c.stroke();
-            c.beginPath(); c.moveTo(240, 170); c.quadraticCurveTo(250, 110, 265, 80); c.stroke();
-            c.beginPath(); c.moveTo(250, 110); c.quadraticCurveTo(310, 80, 330, 120); c.quadraticCurveTo(270, 140, 250, 110); c.stroke();
-        }
-
-        function drawBanana(c) {
-            c.lineWidth = 5; c.strokeStyle = '#2D3436';
-            c.beginPath(); c.moveTo(140, 110);
-            c.bezierCurveTo(340, 90, 410, 270, 310, 390);
-            c.bezierCurveTo(190, 440, 90, 290, 140, 110); c.stroke();
-        }
-
-        function drawCat(c) {
-            c.lineWidth = 5; c.strokeStyle = '#2D3436';
-            c.beginPath(); c.arc(240, 240, 110, 0, Math.PI * 2); c.stroke();
-            c.beginPath(); c.moveTo(150, 160); c.lineTo(120, 70); c.lineTo(200, 130); c.stroke();
-            c.beginPath(); c.moveTo(330, 160); c.lineTo(360, 70); c.lineTo(280, 130); c.stroke();
-            c.beginPath(); c.arc(190, 220, 12, 0, Math.PI * 2); c.stroke();
-            c.beginPath(); c.arc(290, 220, 12, 0, Math.PI * 2); c.stroke();
-            c.beginPath(); c.arc(240, 260, 8, 0, Math.PI * 2); c.stroke();
-        }
-
-        function drawDog(c) {
-            c.lineWidth = 5; c.strokeStyle = '#2D3436';
-            c.beginPath(); c.arc(240, 220, 95, 0, Math.PI * 2); c.stroke();
-            c.beginPath(); c.ellipse(125, 240, 28, 65, 0.2, 0, Math.PI * 2); c.stroke();
-            c.beginPath(); c.ellipse(355, 240, 28, 65, -0.2, 0, Math.PI * 2); c.stroke();
-        }
-
-        function drawElephant(c) {
-            c.lineWidth = 5; c.strokeStyle = '#2D3436';
-            c.beginPath(); c.arc(240, 210, 100, 0, Math.PI * 2); c.stroke();
-            c.beginPath(); c.arc(120, 210, 55, 0, Math.PI * 2); c.stroke();
-            c.beginPath(); c.arc(360, 210, 55, 0, Math.PI * 2); c.stroke();
-            c.beginPath(); c.moveTo(220, 270); c.quadraticCurveTo(240, 400, 300, 360); c.stroke();
-        }
-
-        function drawFish(c) {
-            c.lineWidth = 5; c.strokeStyle = '#2D3436';
-            c.beginPath(); c.ellipse(220, 240, 130, 85, 0, 0, Math.PI * 2); c.stroke();
-            c.beginPath(); c.moveTo(330, 210); c.lineTo(420, 140); c.lineTo(420, 340); c.closePath(); c.stroke();
-            c.beginPath(); c.arc(140, 210, 10, 0, Math.PI * 2); c.stroke();
-        }
-
-        function drawZebra(c) {
-            c.lineWidth = 5; c.strokeStyle = '#2D3436';
-            c.beginPath(); c.ellipse(240, 240, 120, 95, 0, 0, Math.PI * 2); c.stroke();
-            c.beginPath(); c.moveTo(190, 150); c.lineTo(210, 240); c.lineTo(180, 330); c.stroke();
-            c.beginPath(); c.moveTo(270, 140); c.lineTo(280, 240); c.lineTo(260, 340); c.stroke();
-        }
-
-        /* Hướng dẫn Đồ chữ nét đứt */
         function drawTracingGuide(letter) {
             ctx.font = '900 300px "Nunito", sans-serif';
             ctx.textAlign = 'center';
@@ -549,7 +507,7 @@
             ctx.fillText(letter, 240, 250);
         }
 
-        /* Thuật toán Đổ màu Flood Fill */
+        /* Đổ màu Flood Fill */
         canvas.addEventListener('click', (e) => {
             if (currentMode !== 'color') return;
             const rect = canvas.getBoundingClientRect();
@@ -593,7 +551,7 @@
             data[i] = color[0]; data[i+1] = color[1]; data[i+2] = color[2]; data[i+3] = 255;
         }
 
-        function colorsMatch(c1, c2, threshold = 30) {
+        function colorsMatch(c1, c2, threshold = 40) {
             return Math.abs(c1[0] - c2[0]) < threshold && Math.abs(c1[1] - c2[1]) < threshold && Math.abs(c1[2] - c2[2]) < threshold;
         }
 
@@ -602,7 +560,7 @@
             return [(bigint >> 16) & 255, (bigint >> 8) & 255, bigint & 255];
         }
 
-        /* Đồ chữ bằng tay/chuột */
+        /* Tracing nét vẽ */
         let isTracing = false;
         function initTracingEvents() {
             canvas.addEventListener('mousedown', startTrace);
@@ -634,7 +592,6 @@
 
         function endTrace() { isTracing = false; }
 
-        /* Âm thanh Đọc chữ tiếng Anh */
         function speakCurrentWord() {
             if ('speechSynthesis' in window) {
                 const item = alphabetData[currentIndex];
@@ -645,7 +602,6 @@
             }
         }
 
-        /* Nhạc nền Synthesizer vui nhộn */
         let audioCtx;
         function toggleMusic() {
             if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
@@ -674,7 +630,6 @@
             setTimeout(playCuteMelody, 600);
         }
 
-        /* Thưởng */
         function completeLevel() {
             document.getElementById('rewardModal').classList.add('show');
             createConfetti();
